@@ -33,7 +33,7 @@ int main() {
     AgregarOperacion(calculadora,'*',multiplicacion);
     AgregarOperacion(calculadora,'/',division);
     
-    resultado=Calcular(calculadora,"2+4");
+    resultado=Calcular(calculadora,"2-4");
     printf("resultado %i\r\n",resultado);
 
     return 0;
