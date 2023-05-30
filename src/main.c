@@ -26,6 +26,8 @@ int division(int a, int b) {
 
 int main() {
     int resultado;
+    char cadena[20];
+
     calculadora_t calculadora = CrearCalculadora();
     resultado=0;
     AgregarOperacion(calculadora,'+',suma);
@@ -33,8 +35,20 @@ int main() {
     AgregarOperacion(calculadora,'*',multiplicacion);
     AgregarOperacion(calculadora,'/',division);//devuelve un numero entero, asi que si divido 2/4 por ej devolvera 0
     
-    resultado=Calcular(calculadora,"6-5");
-    printf("resultado %i\r\n",resultado);
+    printf("Para terminar el programa escriba salir \n");
 
+    while(1){ 
+
+        printf("Introduce la operación: ");
+        scanf("%s", cadena);
+
+        if (strcmp(cadena, "salir") == 0) {
+            printf("Programa finalizado.\n");
+            break;
+        }
+
+        resultado=Calcular(calculadora,cadena);
+        printf("resultado %i\r\n",resultado);
+    }
     return 0;
 }
