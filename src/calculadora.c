@@ -8,7 +8,7 @@ typedef struct operacion_s{
     funcion_t funcion;
     operacion_t siguiente;
 
-};
+}*operacion_t;
 
 struct calculadora_s{
 
@@ -18,7 +18,7 @@ struct calculadora_s{
 
 calculadora_t CrearCalculadora(void){
 
-    calculadora_t puntero=malloc(sizeof(struct calculadora_s));
+    calculadora_t puntero= malloc(sizeof(struct calculadora_s));
     
     if(puntero){
         memset(puntero,0,sizeof(struct calculadora_s));
@@ -31,7 +31,7 @@ return puntero;
 
 operacion_t BuscarOperacion(calculadora_t calculadora,char operador){
     operacion_t result=NULL;
-    for(operacion_t actual=calculadora->operaciones;actual->siguiente!=NULL;actual=actual->siguiente){
+    for(operacion_t actual=calculadora->operaciones;actual!=NULL;actual=actual->siguiente){
         if(actual->operador==operador) {
             result=actual; 
             break;
@@ -44,7 +44,8 @@ operacion_t BuscarOperacion(calculadora_t calculadora,char operador){
 
 bool AgregarOperacion(calculadora_t calculadora,char operador,funcion_t funcion){
 
-    operacion_t operacion=malloc(sizeof(struct operacion_s));
+    operacion_t operacion = malloc(sizeof(struct operacion_s));
+    
     if((operacion)&& !BuscarOperacion(calculadora,operador)){
         operacion->operador=operador;
         operacion->funcion=funcion;
@@ -52,7 +53,6 @@ bool AgregarOperacion(calculadora_t calculadora,char operador,funcion_t funcion)
         calculadora->operaciones=operacion;
     }
     return (operacion!=NULL);
-
 }
 
 int Calcular(calculadora_t calculadora,char *cadena){

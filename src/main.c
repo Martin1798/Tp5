@@ -26,14 +26,14 @@ int division(int a, int b) {
 
 int main() {
     int resultado;
-    calculadora_t calculadora=CrearCalculadora();
-    
+    calculadora_t calculadora = CrearCalculadora();
+    resultado=0;
     AgregarOperacion(calculadora,'+',suma);
     AgregarOperacion(calculadora,'-',resta);
     AgregarOperacion(calculadora,'*',multiplicacion);
-    AgregarOperacion(calculadora,'/',division);
+    AgregarOperacion(calculadora,'/',division);//devuelve un numero entero, asi que si divido 2/4 por ej devolvera 0
     
-    resultado=Calcular(calculadora,"2-4");
+    resultado=Calcular(calculadora,"6-5");
     printf("resultado %i\r\n",resultado);
 
     return 0;
